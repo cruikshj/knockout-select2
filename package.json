@@ -20,6 +20,6 @@
     "load-grunt-tasks": "*"
   },
   "scripts": {
-    "test": "bower install && grunt test:full"
+    "test": "bower install && grunt test"
   }
 }
