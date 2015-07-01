@@ -7,7 +7,7 @@ define(['knockout', 'src/knockout-select2'], function (ko, knockoutselect2) {
 
     before(function () {
       root = document.createElement('div');
-      root.innerHTML = '<select id="select" data-bind="select2:options">';
+      root.innerHTML = '<select id="select" data-bind="select2:options"></select>';
       document.body.appendChild(root);
       element = document.getElementById('select');
     });

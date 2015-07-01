@@ -54,16 +54,16 @@
                 });
             }
            
-            // Destroy select2 on element disposal
-            ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
-                $(element).select2('destroy');
-            });
-
             // Apply select2 and initialize data; delay to allow other binding handlers to run
             setTimeout(function () {
 
                 // Apply select2
                 $(element).select2(bindingValue);
+                
+                // Destroy select2 on element disposal
+                ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
+                    $(element).select2('destroy');
+                });
 
             }, 0);
 

@@ -1,6 +1,7 @@
 require.config({
   baseUrl: '/base', //karma servers files from base
   paths: {
+    jquery: 'bower_components/jQuery/dist/jquery',
     knockout: 'bower_components/knockout.js/knockout'
   }
 });
