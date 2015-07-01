@@ -1,11 +1,11 @@
 /* jshint boss:true*/
-!function (factory) {
+(function (factory) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery', 'knockout', 'module'], factory);
     } else {
         factory(jQuery, ko);
     }
-} (function ($, ko, module) {
+})(function ($, ko, module) {
     'use strict';
 
     var bindingName = 'select2';
