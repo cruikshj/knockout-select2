@@ -1,30 +1,30 @@
-define(['knockout', 'src/knockout-select2'], function(ko, knockout-select2) {
+define(['knockout', 'src/knockout-select2'], function (ko, knockoutselect2) {
 
-  describe('Knockout-select2', function() {
+  describe('Bind', function () {
     var viewModel;
     var element;
     var root;
 
     before(function () {
       root = document.createElement('div');
-      root.innerHTML = '<input id="input" data-bind="knockout-select2:obs">';
+      root.innerHTML = '<select id="select" data-bind="select2:options">';
       document.body.appendChild(root);
-      element = document.getElementById('input');
+      element = document.getElementById('select');
     });
 
-    beforeEach(function() {
+    beforeEach(function () {
       viewModel = {
-        obs: ko.observable()
+        options: ko.observable({})
       };
 
       ko.applyBindings(viewModel, root);
     });
 
-    afterEach(function() {
+    afterEach(function () {
       ko.cleanNode(root);
     });
 
-    it('should be bound', function() {
+    it('should be bound', function () {
       expect(ko.dataFor(element)).to.be(viewModel);
     });
 

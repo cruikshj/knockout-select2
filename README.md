@@ -29,7 +29,9 @@ requirejs.config({
 
 ## Dependencies
 
+- jQuery
 - knockout
+- select2
 
 For accurate versions check bower.json
 
