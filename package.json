@@ -12,6 +12,7 @@
     "grunt-contrib-jshint": "*",
     "grunt-contrib-watch": "*",
     "grunt-karma": "*",
+    "grunt-nuget": "^0.1.4",
     "karma": "*",
     "karma-expect": "*",
     "karma-mocha": "*",

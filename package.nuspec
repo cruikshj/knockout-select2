@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>knockout-select2</id>
+    <version>1.0.0-alpha</version>
+    <title>knockout-select2</title>
+    <authors>Shaftware</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Select2 v4 binding handler for KnockoutJS.</description>
+    <projectUrl>https://github.com/shaftware/knockout-select2</projectUrl>    
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <copyright>Copyright © 2015 Shaftware</copyright>
+    <dependencies>
+      <dependency id="jQuery" version="1.7.2" />
+      <dependency id="knockoutjs" version="2.1.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="src\knockout-select2.js" target="content\scripts\knockout-select2.js" />
+  </files>
+</package>

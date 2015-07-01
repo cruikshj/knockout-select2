@@ -44,6 +44,12 @@
         server: {
           background: true,
         },
+      },
+      nugetpack: {
+        dist: {
+          src: 'package.nuspec',
+          dest: 'dist/nuget/'
+        }
       }
     });
 
@@ -53,5 +59,8 @@
     //For testing
     grunt.registerTask('test', ['jshint', 'karma:once']);
     grunt.registerTask('test:full', ['jshint', 'bowerVerify']);
+    
+    //For release
+    grunt.registerTask('pack', ['nugetpack']);
   };
 })();
