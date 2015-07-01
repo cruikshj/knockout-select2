@@ -1,0 +1,24 @@
+{
+  "name": "knockout-select2v4",
+  "main": "src/knockout-select2.js",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shaftware/knockout-select2.git"
+  },
+  "ignore": [
+    "node_modules",
+    "spec",
+    "Gruntfile.js",
+    "karma.conf.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "jQuery": ">=1.7.2",
+    "select2": "~4",
+    "knockout.js": ">=2.1.0"
+  },
+  "devDependencies": {
+    "requirejs": "*"
+  }
+}

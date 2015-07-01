@@ -1,0 +1,15 @@
+{
+  "browser": true,
+  "predef": [
+    "define",
+    "require",
+    "requirejs",
+    "describe",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "expect",
+    "it"
+  ]
+}

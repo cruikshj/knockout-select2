@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <title></title>
+        <link href="../bower_components/select2/dist/css/select2.css" rel="stylesheet" />
+        <style>
+            select {
+                width: 200px;
+                margin-bottom: 20px;
+            }
+        </style>
+        <script src="../bower_components/jQuery/dist/jquery.js"></script>
+        <script src="../bower_components/knockout.js/knockout.debug.js"></script>
+        <script src="../bower_components/select2/dist/js/select2.js"></script>
+        <script src="../src/knockout-select2.js"></script>
+    </head>
+    
+    <body>
+        <div id="select-view">
+            <h1>Select</h1>
+            <select data-bind="options: options, value: option, optionsText: 'text', optionsValue: 'id', select2: spec"></select>
+            <select data-bind="options: options, value: option, optionsText: 'text', optionsValue: 'id'"></select>
+            <span data-bind="text:  option()"></span>
+        </div>
+        <script>
+            $(function() {
+    
+                var options = [
+                    { id: '0', text: 'Red' },
+                    { id: '1', text: 'White' },
+                    { id: '2', text: 'Blue' }
+                ];
+        
+                var option = ko.observable('0');
+    
+                var spec = {
+    
+                };
+    
+                var model = {
+                    spec: spec,
+                    options: options,
+                    option: option
+                };
+    
+                ko.applyBindings(model, $("#select-view").get(0));
+            });
+        </script>
+        <div id="selectdata-view">
+            <h1>Select Data</h1>
+            <select data-bind="options: options, selectedOptions: selectedOptions, optionsText: 'text', select2: spec"></select>
+            <select data-bind="options: options, selectedOptions: selectedOptions, optionsText: 'text'"></select>
+            <span data-bind="text: option().id + ' ' + option().text"></span>
+        </div>
+        <script>
+            $(function() {
+    
+                var options = [
+                    { id: '0', text: 'Red' },
+                    { id: '1', text: 'White' },
+                    { id: '2', text: 'Blue' }
+                ];
+        
+                var selectedOptions = ko.observableArray([options[0]]);
+    
+                var spec = {
+    
+                };
+    
+                var model = {
+                    spec: spec,
+                    options: options,
+                    selectedOptions: selectedOptions,
+                    option: ko.computed(function(){
+                        return selectedOptions()[0];
+                    })
+                };
+    
+                ko.applyBindings(model, $("#selectdata-view").get(0));
+            });
+        </script>
+        <div id="multiselect-view">
+            <h1>Multi-select</h1>
+            <select multiple="multiple" data-bind="options: options, selectedOptions: selectedOptions, optionsText: 'text', select2: spec"></select>
+            <select multiple="multiple" data-bind="options: options, selectedOptions: selectedOptions, optionsText: 'text'"></select>
+            <span data-bind="foreach: selectedOptions()">
+                <span data-bind="text: text + ' '"></span>
+            </span>
+        </div>
+        <script>
+            $(function () {
+    
+                var options = [
+                    { id: '0', text: 'Red' },
+                    { id: '1', text: 'White' },
+                    { id: '2', text: 'Blue' }
+                ];
+        
+                var selectedOptions = ko.observableArray(options);
+    
+                var spec = {
+                };
+    
+                var model = {
+                    spec: spec,
+                    options: options,
+                    selectedOptions: selectedOptions
+                };
+    
+                ko.applyBindings(model, $("#multiselect-view").get(0));
+            });
+        </script>
+        <div id="tags-view">
+            <h1>Tags</h1>
+            <select multiple="multiple" data-bind="options: options, selectedOptions: selectedOptions, optionsText: optionsText, select2: spec"></select>
+            <select multiple="multiple" data-bind="options: options, selectedOptions: selectedOptions, optionsText: optionsText"></select>
+            <span data-bind="foreach: selectedOptions()">
+                <span data-bind="text: $root.optionsText($data) + ' '"></span>
+            </span>
+        </div>
+        <script>
+            $(function () {
+    
+                var options = [
+                    { id: '0', text: 'Red' },
+                    { id: '1', text: 'White' },
+                    { id: '2', text: 'Blue' }
+                ];
+        
+                var selectedOptions = ko.observableArray();
+    
+                var spec = {
+                    tags: true
+                };
+    
+                var model = {
+                    spec: spec,
+                    options: options,
+                    selectedOptions: selectedOptions,
+                    optionsText: function(item) { 
+                        return item.text || item; 
+                    }
+                };
+    
+                ko.applyBindings(model, $("#tags-view").get(0));
+            });
+        </script>
+    </body>
+
+</html>

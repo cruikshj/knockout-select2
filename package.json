@@ -1,0 +1,25 @@
+{
+  "name": "noname",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "bower": "*",
+    "express": "^4.13.0",
+    "grunt": "*",
+    "grunt-bower": "*",
+    "grunt-bower-requirejs": "*",
+    "grunt-bower-verify": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-karma": "*",
+    "karma": "*",
+    "karma-expect": "*",
+    "karma-mocha": "*",
+    "karma-phantomjs-launcher": "*",
+    "karma-requirejs": "*",
+    "load-grunt-tasks": "*"
+  },
+  "scripts": {
+    "test": "bower install && grunt test:full"
+  }
+}
