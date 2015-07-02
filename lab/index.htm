@@ -148,12 +148,12 @@
         </script>
         <div id="ajax-view">
             <h1>Ajax</h1>
-            <select multiple="multiple" data-bind="select2data: select2data, select2: spec"></select>
+            <select multiple="multiple" data-bind="select2Data: select2Data, select2: spec"></select>
         </div>
         <script>
             $(function () {
                            
-                var select2data = ko.observable();
+                var select2Data = ko.observable();
     
                 var spec = {
                     ajax: {
@@ -171,11 +171,11 @@
                     minimumInputLength: 1
                 };
                 
-                select2data.subscribe(function (v) { console.log(v);});
+                select2Data.subscribe(function (v) { console.log(v);});
     
                 var model = {
                     spec: spec,
-                    select2data: select2data
+                    select2Data: select2Data
                 };
     
                 ko.applyBindings(model, $("#ajax-view").get(0));

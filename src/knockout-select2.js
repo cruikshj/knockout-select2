@@ -13,6 +13,8 @@
         bindingName = module.config().name;
     }
     
+    var dataBindingName = bindingName + "Data";
+    
     function triggerChangeQuietly(element, binding) {
         var isObservable = ko.isObservable(binding);
         var originalEqualityComparer;
@@ -54,9 +56,9 @@
             }
             
             // Provide a hook for binding to the select2 "data" property; this property is read-only in select2 so not subscribing.
-            if (ko.isWriteableObservable(allBindings.select2Data)) {
+            if (ko.isWriteableObservable(allBindings[dataBindingName])) {
                 dataChangeHandler = function() {                                     
-                    allBindings.select2Data($(element).select2("data"));
+                    allBindings[dataBindingName]($(element).select2("data"));
                 };
                 $(element).on("change", dataChangeHandler);                       
             }
