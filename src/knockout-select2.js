@@ -17,12 +17,12 @@
         var isObservable = ko.isObservable(binding);
         var originalEqualityComparer;
         if (isObservable) {
-            originalEqualityComparer = binding['equalityComparer'];
-            binding['equalityComparer'] = function () { return true; };
+            originalEqualityComparer = binding.equalityComparer;
+            binding.equalityComparer = function () { return true; };
         }
         $(element).trigger('change');
         if (isObservable) {
-            binding['equalityComparer'] = originalEqualityComparer;
+            binding.equalityComparer = originalEqualityComparer;
         }
     }
 
