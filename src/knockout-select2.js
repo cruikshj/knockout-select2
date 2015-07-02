@@ -13,15 +13,17 @@
         bindingName = module.config().name;
     }
     
-    var ec = 'equalityComparer';
-    var oec = '_' + ec;
-    function suppressNotify(observable) {
-        observable[oec] = observable[ec];
-        observable[ec] = function () { return true; };
-    }    
-    function allowNotify(observable) {
-        observable[ec] = observable[oec];
-        observable[oec] = null;
+    function triggerChangeQuietly(element, binding) {
+        var isObservable = ko.isObservable(binding);
+        var originalEqualityComparer;
+        if (isObservable) {
+            originalEqualityComparer = binding['equalityComparer'];
+            binding['equalityComparer'] = function () { return true; };
+        }
+        $(element).trigger('change');
+        if (isObservable) {
+            binding['equalityComparer'] = originalEqualityComparer;
+        }
     }
 
     return ko.bindingHandlers[bindingName] = {
@@ -30,28 +32,33 @@
             var bindingValue = ko.unwrap(valueAccessor());
             var allBindings = allBindingsAccessor();
             var ignoreChange = false;
-            
+            var dataChangeHandler = null;
+                        
             $(element).on("select2:selecting select2:unselecting", function() {
                 ignoreChange = true;
             });            
             $(element).on("select2:select select2:unselect", function() {
                 ignoreChange = false;
-            });
+            });             
             
             if (ko.isObservable(allBindings.value)) {
                 allBindings.value.subscribe(function (value) {
                     if (ignoreChange) return;
-                    suppressNotify(this.target);
-                    $(element).trigger('change');
-                    allowNotify(this.target);
+                    triggerChangeQuietly(element, this.target);
                 });
             } else if (ko.isObservable(allBindings.selectedOptions)) {               
                 allBindings.selectedOptions.subscribe(function (value) { 
                     if (ignoreChange) return;
-                    suppressNotify(this.target);
-                    $(element).trigger('change');
-                    allowNotify(this.target);
+                    triggerChangeQuietly(element, this.target);
                 });
+            }
+            
+            // Provide a hook for binding to the select2 "data" property; this property is read-only in select2 so not subscribing.
+            if (ko.isWriteableObservable(allBindings.select2Data)) {
+                dataChangeHandler = function() {                                     
+                    allBindings.select2Data($(element).select2("data"));
+                };
+                $(element).on("change", dataChangeHandler);                       
             }
            
             // Apply select2 and initialize data; delay to allow other binding handlers to run
@@ -59,17 +66,16 @@
 
                 // Apply select2
                 $(element).select2(bindingValue);
-                
+                                
                 // Destroy select2 on element disposal
                 ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
                     $(element).select2('destroy');
+                    if (dataChangeHandler !== null) {
+                        $(element).off("change", dataChangeHandler);
+                    }
                 });
 
             }, 0);
-
-        },
-        update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-
         }
     };
 });

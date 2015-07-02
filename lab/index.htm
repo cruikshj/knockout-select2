@@ -45,8 +45,6 @@
                 };
     
                 ko.applyBindings(model, $("#select-view").get(0));
-                
-                //ko.cleanNode($("#select-view").get(0));
             });
         </script>
         <div id="selectdata-view">
@@ -81,7 +79,7 @@
     
                 ko.applyBindings(model, $("#selectdata-view").get(0));
             });
-        </script>
+        </script>        
         <div id="multiselect-view">
             <h1>Multi-select</h1>
             <select multiple="multiple" data-bind="options: options, selectedOptions: selectedOptions, optionsText: 'text', select2: spec"></select>
@@ -146,6 +144,41 @@
                 };
     
                 ko.applyBindings(model, $("#tags-view").get(0));
+            });
+        </script>
+        <div id="ajax-view">
+            <h1>Ajax</h1>
+            <select multiple="multiple" data-bind="select2data: select2data, select2: spec"></select>
+        </div>
+        <script>
+            $(function () {
+                           
+                var select2data = ko.observable();
+    
+                var spec = {
+                    ajax: {
+                        url: '/data',
+                        dataType: 'json',
+                        delay: 250,
+                        processResults: function (data, page) {
+                            return {
+                                results: $.map(data, function (item) {
+                                    return { id: item.abbreviation, text: item.name, data: item };
+                                })
+                            };
+                        }
+                    },  
+                    minimumInputLength: 1
+                };
+                
+                select2data.subscribe(function (v) { console.log(v);});
+    
+                var model = {
+                    spec: spec,
+                    select2data: select2data
+                };
+    
+                ko.applyBindings(model, $("#ajax-view").get(0));
             });
         </script>
     </body>
