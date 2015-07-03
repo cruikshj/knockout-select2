@@ -1,4 +1,4 @@
-# Knockout-select2 binding for knockout
+# Select2 v4 binding handler for Knockout
 
 [![Build status](https://travis-ci.org/shaftware/knockout-select2.png)](https://travis-ci.org/shaftware/knockout-select2)
 
