@@ -61,7 +61,7 @@
       nugetpack: {
         dist: {
           src: 'package.nuspec',
-          dest: 'dist/nuget/'
+          dest: 'nuget/'
         }
       }
     });
