@@ -9,7 +9,9 @@
     "grunt-bower": "*",
     "grunt-bower-requirejs": "*",
     "grunt-bower-verify": "*",
+    "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "*",
     "grunt-karma": "*",
     "grunt-nuget": "^0.1.4",
@@ -21,6 +23,6 @@
     "load-grunt-tasks": "*"
   },
   "scripts": {
-    "test": "bower install && grunt test"
+    "test": "bower install && grunt test && grunt build"
   }
 }

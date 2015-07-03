@@ -1,6 +1,17 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 before_script:
-  - npm install -g grunt-cli
-  - npm install -g bower
+- npm install -g grunt-cli
+- npm install -g bower
+deploy:
+  provider: releases
+  api_key:
+    secure: vPbFVVeb5EIyBwBDOrqUVIpmEhtlW4/Lcp7yEpzuYZlgiVZEiAw6b3p+3pSax8cAFyqSOO/OcTJqeQfuqJXWJFpYQlagNbtnNN8ln+ED3J6iwSNhHuHWEcF4wAKxhOowglXf8ES7CyChCGElm8j8o/SOHaZEBMKU/W3VChGJr7YruZjoYSYpZ7nhO6YpXgL0Kkan3siUMmPKhqs3mX8Hrh2cvBKvN4gY7QDSOGSRb5MhXjxt3N+UW6AYuy6EhbIfEZphip3lTlejNdzHlaU8OVdxHO9WLmBBIeHXkLuCoy3sI4X+QBcSPER8SndfrQ6Pw09bhAR/5g6q8qEDLrOgHSDMZSy6/LcDvs1Fou6cdpDW00AtISXTqCzmND3g4SmpsW7XnY8IT4sMIoYk1MFa+t/mnO66ZoccayEhZw2wzPw646zLRfBaOBSSn58AFmyuSeHcnWwMFKrWbJnESwnrjd2fvUEDmLIhTQKl9XEJYWZoZ7oOKFVRMw+N0Uj9zUPo+ERbAyoU56vBCo6WscSV5VBfEwnQMLES2wsRDy+uoF1ee05VModTlL04M1aQNs0yNQxMmL2vU3ug+Mk+b0B1lqnoyIf1eojnsShK8XzpHM7Fm5Qqse2hFTDzWHmsiV7jtZF+pqs+zX1nBcADZisn7wpZwQCK3X9yW15ni/3jDx8=
+  file: 
+    - "dist\knockout-select2.js"
+    - "dist\knockout-select2.min.js"
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: shaftware/knockout-select2

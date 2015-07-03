@@ -45,6 +45,19 @@
           background: true,
         },
       },
+      copy: {
+        dist: {
+          src: 'src/knockout-select2.js',
+          dest: 'dist/knockout-select2.js'
+        }
+      },
+      uglify: {
+        dist: {
+          files: {
+            'dist/knockout-select2.min.js': ['dist/knockout-select2.js']
+          }
+        }
+      },
       nugetpack: {
         dist: {
           src: 'package.nuspec',
@@ -53,14 +66,17 @@
       }
     });
 
-    //For development
-    grunt.registerTask('develop', ['jshint', 'karma:server', 'watch:scripts']);
+    //development
+    grunt.registerTask('dev', ['jshint', 'karma:server', 'watch:scripts']);
 
-    //For testing
+    //testing
     grunt.registerTask('test', ['jshint', 'karma:once']);
     grunt.registerTask('test:full', ['jshint', 'bowerVerify']);
     
-    //For release
+    //build
+    grunt.registerTask('build', ['copy', 'uglify']);
+    
+    //release
     grunt.registerTask('pack', ['nugetpack']);
   };
 })();

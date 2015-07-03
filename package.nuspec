@@ -6,7 +6,8 @@
     <title>knockout-select2</title>
     <authors>Shaftware</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Select2 v4 binding handler for KnockoutJS.</description>
+    <description>A Select2 v4 binding handler for Knockout.</description>
+    <tags>knockout knockoutjs ko select2</tags>
     <projectUrl>https://github.com/shaftware/knockout-select2</projectUrl>    
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <copyright>Copyright © 2015 Shaftware</copyright>
@@ -16,6 +17,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="src\knockout-select2.js" target="content\scripts\knockout-select2.js" />
+    <file src="dist\knockout-select2.js" target="content\scripts\" />
+    <file src="dist\knockout-select2.min.js" target="content\scripts\" />
   </files>
 </package>
