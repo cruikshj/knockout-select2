@@ -10,7 +10,7 @@
   "dependencies": {
     "jQuery": ">=1.7.2",
     "select2": "~4",
-    "knockout.js": ">=2.1.0"
+    "knockout": ">=2.1.0"
   },
   "devDependencies": {
     "requirejs": "*"
