@@ -1,4 +1,4 @@
-define(['knockout', 'src/knockout-select2'], function (ko, knockoutselect2) {
+define(['jquery', 'knockout', 'select2', 'src/knockout-select2'], function ($, ko, select2, knockoutselect2) {
 
   describe('Bind', function () {
     var viewModel;
