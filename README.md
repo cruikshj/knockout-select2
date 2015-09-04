@@ -34,13 +34,3 @@ requirejs.config({
 - select2
 
 For accurate versions check bower.json
-
-## Contributing
-
-Clone, then run (assuming you have node)
-
-    npm install & bower install
-
-You can now use grunt develop for a ready made watch task for development. Tests, linting..
-
-    grunt develop
