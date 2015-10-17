@@ -1,6 +1,6 @@
 # Select2 v4 binding handler for Knockout
 
-[![Build status](https://travis-ci.org/shaftware/knockout-select2.png)](https://travis-ci.org/shaftware/knockout-select2)
+[![Build status](https://travis-ci.org/cruikshj/knockout-select2.png)](https://travis-ci.org/cruikshj/knockout-select2)
 [![Bower version](https://badge.fury.io/bo/knockout-select2v4.svg)](http://badge.fury.io/bo/knockout-select2v4)
 [![NuGet version](https://badge.fury.io/nu/knockout-select2.svg)](http://badge.fury.io/nu/knockout-select2)
 
