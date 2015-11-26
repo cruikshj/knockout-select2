@@ -148,12 +148,18 @@
         </script>
         <div id="ajax-view">
             <h1>Ajax</h1>
-            <select multiple="multiple" data-bind="select2Data: select2Data, select2: spec"></select>
+            <select multiple="multiple" data-bind="select2Data: select2Data, select2: spec, options: initialOptions, selectedOptions: initialSelectedOptions, optionsText: 'name', optionsValue: 'abbreviation'"></select>
         </div>
         <script>
             $(function () {
                            
-                var select2Data = ko.observable();
+                var select2Data = ko.observable('');
+                
+                var initialOptions = [
+                    { name: 'ALABAMA', abbreviation: 'AL' },
+                    { name: 'ALASKA', abbreviation: 'AK' }
+                ];
+                var initialSelectedOptions = $.map(initialOptions, function(item) { return item.abbreviation }); 
     
                 var spec = {
                     ajax: {
@@ -166,19 +172,30 @@
                                     return { id: item.abbreviation, text: item.name, data: item };
                                 })
                             };
-                        }
+                        }                        
                     },  
-                    minimumInputLength: 1
+                    minimumInputLength: 1,
+                    placeholder: "Select...",
+                    templateResult: function (item) {
+                        return item.text;            
+                    },
+                    templateSelection: function (item) {
+                        return item.text;
+                    },
+                    escapeMarkup: function (markup) { return markup; }
                 };
                 
                 select2Data.subscribe(function (v) { console.log(v);});
     
-                var model = {
-                    spec: spec,
-                    select2Data: select2Data
+                var model = function()
+                {
+                    this.spec = spec;
+                    this.select2Data = select2Data;
+                    this.initialOptions = initialOptions;
+                    this.initialSelectedOptions = initialSelectedOptions;
                 };
     
-                ko.applyBindings(model, $("#ajax-view").get(0));
+                ko.applyBindings(model(), $("#ajax-view").get(0));
             });
         </script>
     </body>
