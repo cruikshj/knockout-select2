@@ -10,7 +10,7 @@
     <tags>knockout knockoutjs ko select2</tags>
     <projectUrl>https://github.com/cruikshj/knockout-select2</projectUrl>    
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
-    <copyright>Copyright © 2015 Shaftware</copyright>
+    <copyright>Copyright © 2015 cruikshj</copyright>
     <dependencies>
       <dependency id="jQuery" version="1.7.2" />
       <dependency id="knockoutjs" version="2.1.0" />
