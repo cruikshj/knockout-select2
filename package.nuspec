@@ -4,11 +4,11 @@
     <id>knockout-select2</id>
     <version>1.0.6</version>
     <title>knockout-select2</title>
-    <authors>Shaftware</authors>
+    <authors>John Cruikshank</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A Select2 v4 binding handler for Knockout.</description>
     <tags>knockout knockoutjs ko select2</tags>
-    <projectUrl>https://github.com/shaftware/knockout-select2</projectUrl>    
+    <projectUrl>https://github.com/cruikshj/knockout-select2</projectUrl>    
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <copyright>Copyright © 2015 Shaftware</copyright>
     <dependencies>
