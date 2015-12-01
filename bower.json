@@ -5,7 +5,7 @@
   "keywords": ["knockout", "knockoutjs", "ko", "select2"],
   "repository": {
     "type": "git",
-    "url": "git@github.com:shaftware/knockout-select2.git"
+    "url": "git@github.com:cruikshj/knockout-select2.git"
   },
   "dependencies": {
     "jQuery": ">=1.7.2",
