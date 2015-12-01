@@ -13,7 +13,7 @@
         bindingName = module.config().name;
     }
     
-    var dataBindingName = bindingName + "Data";
+    var dataBindingName = bindingName + 'Data';
     
     function triggerChangeQuietly(element, binding) {
         var isObservable = ko.isObservable(binding);
@@ -36,10 +36,10 @@
             var ignoreChange = false;
             var dataChangeHandler = null;
                         
-            $(element).on("select2:selecting select2:unselecting", function() {
+            $(element).on('select2:selecting select2:unselecting', function() {
                 ignoreChange = true;
             });            
-            $(element).on("select2:select select2:unselect", function() {
+            $(element).on('select2:select select2:unselect', function() {
                 ignoreChange = false;
             });             
             
@@ -57,10 +57,11 @@
             
             // Provide a hook for binding to the select2 "data" property; this property is read-only in select2 so not subscribing.
             if (ko.isWriteableObservable(allBindings[dataBindingName])) {
-                dataChangeHandler = function() {                                     
-                    allBindings[dataBindingName]($(element).select2("data"));
+                dataChangeHandler = function() {
+                    if (!$(element).data('select2')) return;                  
+                    allBindings[dataBindingName]($(element).select2('data'));
                 };
-                $(element).on("change", dataChangeHandler);                       
+                $(element).on('change', dataChangeHandler);                       
             }
            
             // Apply select2 and initialize data; delay to allow other binding handlers to run
@@ -73,7 +74,7 @@
                 ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
                     $(element).select2('destroy');
                     if (dataChangeHandler !== null) {
-                        $(element).off("change", dataChangeHandler);
+                        $(element).off('change', dataChangeHandler);
                     }
                 });
 

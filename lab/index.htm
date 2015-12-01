@@ -148,7 +148,7 @@
         </script>
         <div id="ajax-view">
             <h1>Ajax</h1>
-            <select multiple="multiple" data-bind="select2Data: select2Data, select2: spec, options: initialOptions, selectedOptions: initialSelectedOptions, optionsText: 'name', optionsValue: 'abbreviation'"></select>
+            <select data-bind="select2Data: select2Data, select2: spec, options: initialOptions, selectedOptions: initialSelectedOptions, optionsText: 'name', optionsValue: 'abbreviation'"></select>
         </div>
         <script>
             $(function () {
@@ -156,8 +156,7 @@
                 var select2Data = ko.observable('');
                 
                 var initialOptions = [
-                    { name: 'ALABAMA', abbreviation: 'AL' },
-                    { name: 'ALASKA', abbreviation: 'AK' }
+                    { name: 'ALABAMA', abbreviation: 'AL' }
                 ];
                 var initialSelectedOptions = $.map(initialOptions, function(item) { return item.abbreviation }); 
     
