@@ -8,7 +8,7 @@
 
 HTML
 
-    <input data-bind="select2: options" >
+    <select data-bind="select2: options" ></select>
 
 JS
 
