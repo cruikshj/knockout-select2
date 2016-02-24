@@ -197,6 +197,41 @@
                 ko.applyBindings(model(), $("#ajax-view").get(0));
             });
         </script>
+        <div id="dual-select-view">
+            <h1>Dual Select</h1>
+            <select data-bind="options: options, value: option, optionsText: 'text', optionsValue: 'id', select2: specA"></select>
+            <select data-bind="options: options, value: option, optionsText: 'text', optionsValue: 'id', select2: specB"></select>
+            <span data-bind="text: option()"></span>
+        </div>
+        <script>
+            $(function() {
+    
+                var options = ko.observableArray([
+                    { id: '0', text: 'Red' },
+                    { id: '1', text: 'White' },
+                    { id: '2', text: 'Blue' }
+                ]);
+        
+                var option = ko.observable('0');
+    
+                var specA = {
+                    placeholder: 'SelectA'
+                };
+                
+                var specB = {
+                    placeholder: 'SelectB'
+                };
+    
+                var model = {
+                    specA: specA,
+                    specB: specB,
+                    options: options,
+                    option: option
+                };
+    
+                ko.applyBindings(model, $("#dual-select-view").get(0));
+            });
+        </script>
     </body>
 
 </html>
