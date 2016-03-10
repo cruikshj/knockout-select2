@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>knockout-select2</id>
-    <version>1.0.6</version>
+    <version>1.0.9</version>
     <title>knockout-select2</title>
     <authors>John Cruikshank</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

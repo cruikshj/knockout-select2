@@ -35,6 +35,7 @@
             var allBindings = allBindingsAccessor();
             var ignoreChange = false;
             var dataChangeHandler = null;
+            var subscription = null;
                         
             $(element).on('select2:selecting select2:unselecting', function() {
                 ignoreChange = true;
@@ -44,12 +45,12 @@
             });             
             
             if (ko.isObservable(allBindings.value)) {
-                allBindings.value.subscribe(function (value) {
+                subscription = allBindings.value.subscribe(function (value) {
                     if (ignoreChange) return;
                     triggerChangeQuietly(element, this._target || this.target);
                 });
             } else if (ko.isObservable(allBindings.selectedOptions)) {               
-                allBindings.selectedOptions.subscribe(function (value) { 
+                subscription = allBindings.selectedOptions.subscribe(function (value) { 
                     if (ignoreChange) return;
                     triggerChangeQuietly(element, this._target || this.target);
                 });
@@ -75,6 +76,9 @@
                     $(element).select2('destroy');
                     if (dataChangeHandler !== null) {
                         $(element).off('change', dataChangeHandler);
+                    }
+                    if (subscription !== null) {
+                        subscription.dispose();
                     }
                 });
 
